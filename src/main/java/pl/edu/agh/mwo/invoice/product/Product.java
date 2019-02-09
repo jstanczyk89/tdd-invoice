@@ -10,8 +10,17 @@ public abstract class Product {
 	private final BigDecimal taxPercent;
 
 	protected Product(String name, BigDecimal price, BigDecimal tax) throws IllegalArgumentException{
-		if (name.equals(null)){
-			throw new IllegalArgumentException("Towar musi miec nazwe");
+		if (name == null){
+			throw new IllegalArgumentException("Name cannot be null");
+		}
+		if (name.equals("")){
+			throw new IllegalArgumentException("Name cannot be empty");
+		}
+		if (price == null){
+			throw new IllegalArgumentException("Price cannot be null");
+		}
+		if (price.signum() == -1){
+			throw new IllegalArgumentException("Price cannot be negative");
 		}
 		this.name = name;
 		this.price = price;
